@@ -39,8 +39,6 @@ public class mainframe implements ActionListener {
 
     mainframe()  {
 
-
-
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setBackground(new Color(82, 82, 82));
         frame.setLocationRelativeTo(null);
@@ -163,9 +161,6 @@ public class mainframe implements ActionListener {
 
         }
 
-        //Button one
-
-
     }
 
     public void AddShortcut(int button) throws IOException {
@@ -199,10 +194,7 @@ public class mainframe implements ActionListener {
 
             saveShortcut(button);
 
-
         }
-
-
     }
 
     public void saveShortcut(int button) throws IOException {
@@ -266,8 +258,8 @@ public class mainframe implements ActionListener {
 
         }else{
 
-
             System.out.println("[Error] No directory has been selected." );
+
         }
 
     }

@@ -23,9 +23,6 @@ public class main {
             main_folder.mkdirs();
         }
 
-
-
-
         //Start
         mainframe mainframe = new mainframe();
     }
