@@ -32,9 +32,7 @@ public class mainframe implements ActionListener {
     private JButton quit_button;
     private JButton config_button;
 
-    private JButton shortcut_one;
-    private JButton shortcut_two;
-    private JButton shortcut_three;
+
 
 
     mainframe()  {
@@ -64,14 +62,6 @@ public class mainframe implements ActionListener {
         quit_button.setBounds (10, 345, 100, 20);
         config_button.setBounds(320,345, 90,20);
 
-
-        shortcut_one = new JButton("empty");
-        shortcut_two = new JButton("empty");
-        shortcut_three = new JButton("empty");
-
-
-
-
         //Button Settings
         chooseFile_button.setFocusable(false);
         chooseBackupLocation_button.setFocusable(false);
@@ -86,19 +76,6 @@ public class mainframe implements ActionListener {
         quit_button.addActionListener(this);
         config_button.addActionListener(this);
 
-        //Shortcut button stuff
-
-        shortcut_one.setBounds(10, 10, 100, 20);
-        shortcut_two.setBounds(10, 40, 100, 20);
-        shortcut_three.setBounds(10, 70, 100,20);
-
-        shortcut_one.setFocusable(false);
-        shortcut_two.setFocusable(false);
-        shortcut_three.setFocusable(false);
-
-        shortcut_one.addActionListener(this);
-        shortcut_two.addActionListener(this);
-        shortcut_three.addActionListener(this);
 
         //adjust size and set layout
         frame.setSize(440,410);
@@ -111,13 +88,7 @@ public class mainframe implements ActionListener {
         frame.add(createBackup_button);
         frame.add(quit_button);
         frame.add(config_button);
-
-        frame.add(shortcut_one);
-        frame.add(shortcut_two);
-        frame.add(shortcut_three);
-
-
-        }
+     }
 
 
     @Override
