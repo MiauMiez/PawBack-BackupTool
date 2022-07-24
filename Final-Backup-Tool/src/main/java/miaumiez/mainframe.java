@@ -214,6 +214,11 @@ public class mainframe implements ActionListener {
 
             saveShortcut(button);
 
+            //saving the name or path or direct content
+            //It would be better to save the name
+            //
+
+
         }
     }
 
@@ -223,7 +228,7 @@ public class mainframe implements ActionListener {
 
 
 
-        FileWriter file = new FileWriter("");
+        FileWriter file = new FileWriter(shortcut_path1);
         try {
 
             file.write(String.valueOf(jsob));
