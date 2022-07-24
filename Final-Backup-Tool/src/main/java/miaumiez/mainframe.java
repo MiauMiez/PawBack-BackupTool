@@ -6,14 +6,13 @@ import org.json.JSONObject;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 
 import static miaumiez.main.main_path;
+import static miaumiez.main.shortcut_path1;
 
 
 public class mainframe implements ActionListener {
@@ -32,10 +31,17 @@ public class mainframe implements ActionListener {
     private JButton quit_button;
     private JButton config_button;
 
-
+    private JButton config_one_button;
 
 
     mainframe()  {
+
+
+        config_one_button = new JButton("Backup 1");
+        config_one_button.setBounds(30, 30, 100, 60);
+        config_one_button.setFocusable(false);
+        config_one_button.addActionListener(this);
+
 
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setBackground(new Color(82, 82, 82));
@@ -88,7 +94,10 @@ public class mainframe implements ActionListener {
         frame.add(createBackup_button);
         frame.add(quit_button);
         frame.add(config_button);
-     }
+
+        frame.add(config_one_button);
+
+    }
 
 
     @Override
@@ -132,7 +141,46 @@ public class mainframe implements ActionListener {
 
         }
 
-    }
+        if(e.getSource() == config_one_button){
+
+            System.out.println("The button that you just have clicked, has been clicked! lol");
+
+            //Check if there is something in the file
+
+
+            try {
+
+
+
+                BufferedReader br = new BufferedReader(new FileReader(shortcut_path1));
+                if (br.readLine() == null) {
+                    System.out.println("The file is empty! Opening the file chooser to select file!");
+                    AddShortcut(1);
+
+                }else {
+
+
+
+                }
+
+
+
+
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+
+
+
+            //If there is content in the file backup it
+
+            //If there is no content in the file open a file chooser
+
+        }
+
+    }//String jsonText = new String((Files.readAllBytes(Paths.get(shortcut_path1))));
+
+
 
     public void AddShortcut(int button) throws IOException {
 
@@ -163,6 +211,7 @@ public class mainframe implements ActionListener {
                 System.out.println("[Error] No directory has been selected.");
             }
 
+
             saveShortcut(button);
 
         }
@@ -188,6 +237,9 @@ public class mainframe implements ActionListener {
 
         }
     }
+
+    //DO NOT CHANGE ANYTHING HERE **************************************************************************************************************************************************************
+
     public void ChooseFiles(){
 
         JFileChooser fileChooser = new JFileChooser();

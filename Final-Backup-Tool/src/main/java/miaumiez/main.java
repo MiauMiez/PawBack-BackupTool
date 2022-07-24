@@ -15,6 +15,11 @@ public class main {
     public static String main_path = "C:\\Users\\" + user + "\\Documents\\backup_tool\\";
     public static String config_path = "C:\\Users\\" + user + "\\Documents\\backup_tool\\configs";
 
+    public static String shortcut_path1 =  main_path + "1.txt";
+    public static String shortcut_path2 =  main_path + "2.txt";
+    public static String shortcut_path3 =  main_path + "3.txt";
+
+
     public static void main (String[] args) throws IOException {
 
         //Creating the necessary folders
@@ -22,6 +27,24 @@ public class main {
         if (!main_folder.exists()) {
             main_folder.mkdirs();
         }
+
+
+        //The Text files for the shortcuts on mainframe
+        File shortcutone = new File(shortcut_path1);
+        File shortcuttwo = new File(shortcut_path2);
+        File shortcutthree = new File(shortcut_path3);
+
+        if(shortcutone.createNewFile()){
+            System.out.println("File created!");
+        }
+        if(shortcuttwo.createNewFile()){
+            System.out.println("File created!");
+        }
+        if(shortcutthree.createNewFile()){
+            System.out.println("File created!");
+        }
+
+
 
         //Start
         mainframe mainframe = new mainframe();
