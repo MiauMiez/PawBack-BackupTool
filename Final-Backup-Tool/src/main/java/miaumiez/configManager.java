@@ -19,12 +19,9 @@ import static javax.swing.JOptionPane.showInputDialog;
 
 public class configManager implements ActionListener{
 
-    //
-
-    //
 
 
-    public JFrame frame = new JFrame("Backup Tool " + " CONFIGMANAGER");
+   public JFrame frame = new JFrame("Backup Tool " + " CONFIGMANAGER");
 
     String config_path = main.config_path;
 
@@ -193,6 +190,8 @@ public class configManager implements ActionListener{
         jsob.put("name", name);
         jsob.put("path", path);
         jsob.put("backupLocation", location);
+
+
 
         String filename =  "\\" + name + ".btc";
         FileWriter file = null;

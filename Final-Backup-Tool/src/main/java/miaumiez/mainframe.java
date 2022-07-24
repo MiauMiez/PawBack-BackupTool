@@ -1,6 +1,5 @@
 package miaumiez;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.swing.*;
@@ -11,8 +10,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 
+import static miaumiez.main.json;
 import static miaumiez.main.main_path;
-import static miaumiez.main.shortcut_path1;
 
 
 public class mainframe implements ActionListener {
@@ -36,6 +35,7 @@ public class mainframe implements ActionListener {
 
     mainframe()  {
 
+     
 
         config_one_button = new JButton("Backup 1");
         config_one_button.setBounds(30, 30, 100, 60);
@@ -107,7 +107,6 @@ public class mainframe implements ActionListener {
         if(e.getSource() == quit_button){
 
             System.exit(0);
-
         }
 
 
@@ -143,44 +142,10 @@ public class mainframe implements ActionListener {
 
         if(e.getSource() == config_one_button){
 
-            System.out.println("The button that you just have clicked, has been clicked! lol");
-
-            //Check if there is something in the file
-
-
-            try {
-
-
-
-                BufferedReader br = new BufferedReader(new FileReader(shortcut_path1));
-                if (br.readLine() == null) {
-                    System.out.println("The file is empty! Opening the file chooser to select file!");
-                    AddShortcut(1);
-
-                }else {
-
-
-
-                }
-
-
-
-
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-
-
-
-            //If there is content in the file backup it
-
-            //If there is no content in the file open a file chooser
 
         }
 
-    }//String jsonText = new String((Files.readAllBytes(Paths.get(shortcut_path1))));
-
-
+    }
 
     public void AddShortcut(int button) throws IOException {
 
@@ -228,7 +193,7 @@ public class mainframe implements ActionListener {
 
 
 
-        FileWriter file = new FileWriter(shortcut_path1);
+        FileWriter file = new FileWriter(json);
         try {
 
             file.write(String.valueOf(jsob));
@@ -243,7 +208,7 @@ public class mainframe implements ActionListener {
         }
     }
 
-    //DO NOT CHANGE ANYTHING HERE **************************************************************************************************************************************************************
+//DO NOT CHANGE ANYTHING HERE ***************************************************************************************************************************************************************************************************************************
 
     public void ChooseFiles(){
 
