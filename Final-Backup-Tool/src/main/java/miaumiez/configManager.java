@@ -57,7 +57,7 @@ public class configManager implements ActionListener{
         //Add Text
         c_back_button = new JButton ("back");
         c_add_config = new JButton("add config");
-        c_load_config = new JButton("load config");
+        c_load_config = new JButton("config info");
         c_delete_config = new JButton("delete config");
 
         //Position and Size

@@ -35,7 +35,7 @@ public class mainframe implements ActionListener {
 
     mainframe()  {
 
-     
+
 
         config_one_button = new JButton("Backup 1");
         config_one_button.setBounds(30, 30, 100, 60);
@@ -49,7 +49,7 @@ public class mainframe implements ActionListener {
         frame.setVisible (true);
         frame.setResizable(false);
         frame.pack();
-        //frame.setLocation(5, 350);
+        frame.setLocation(500, 350);
 
 
         //construct components
