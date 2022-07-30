@@ -31,6 +31,7 @@ public class configManager implements ActionListener{
     private JButton c_delete_config;
 
 
+
     public String c_name;
     public String c_path;
     public File c_path_file;
@@ -281,3 +282,4 @@ public class configManager implements ActionListener{
     }
 
 }
+//Comment
