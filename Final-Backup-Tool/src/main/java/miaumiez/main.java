@@ -10,7 +10,6 @@ public class main {
 
     public static String user = System.getProperty("user.name");
 
-
     public static String main_path = "C:\\Users\\" + user + "\\Documents\\backup_tool\\";
     public static String config_path = "C:\\Users\\" + user + "\\Documents\\backup_tool\\configs";
 
@@ -44,27 +43,3 @@ public class main {
 }
 
 
-
-
-//Getting files from a folder
-/* loading directory content into index
-
-File directory = new File(main_path);
-        File[] contentOfDirectory = directory.listFiles();
-
-        for(File Object : contentOfDirectory){
-
-            if(Object.isFile()){
-
-                System.out.format("File name: %s%n ", Object.getName());
-                Object.getPath();
-
-            }
-            if(Object.isDirectory()){
-
-                System.out.format("Directory name: %s%n ", Object.getName());
-
-            }
-
-        }
- */

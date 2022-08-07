@@ -15,11 +15,7 @@ import java.nio.file.Paths;
 import static javax.swing.JOptionPane.showConfirmDialog;
 import static javax.swing.JOptionPane.showInputDialog;
 
-
-
 public class configManager implements ActionListener{
-
-
 
    public JFrame frame = new JFrame("Backup Tool " + " CONFIGMANAGER");
 
@@ -29,8 +25,6 @@ public class configManager implements ActionListener{
     private JButton c_add_config;
     private JButton c_load_config;
     private JButton c_delete_config;
-
-
 
     public String c_name;
     public String c_path;
@@ -183,7 +177,6 @@ public class configManager implements ActionListener{
         addConfig(c_name, c_path, c_backup_location);
     }
 
-
     public void addConfig(String name, String path, String location) throws IOException {
 
         JSONObject jsob = new JSONObject();
@@ -211,7 +204,6 @@ public class configManager implements ActionListener{
             file.close();
         }
     }
-
 
     public void loadConfig(){
 
@@ -282,4 +274,3 @@ public class configManager implements ActionListener{
     }
 
 }
-//Comment

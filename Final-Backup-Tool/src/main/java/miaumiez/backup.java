@@ -15,7 +15,6 @@ import java.time.format.DateTimeFormatter;
 public class backup {
 
     public void Backup() {
-
         //Gets the Name of file_BackupLocation
         String backup_file_name = mainframe.file_toBackup.getName();
 
@@ -36,8 +35,6 @@ public class backup {
             theDir.mkdirs();
         }
 
-
-
         //Clone Files
         File endFile = new File(end_path);
 
@@ -51,3 +48,4 @@ public class backup {
     }
 }
 
+//Commit

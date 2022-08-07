@@ -29,7 +29,6 @@ public class loadConfig {
     static String config_path;
     static String config_backuplocation;
 
-
     loadConfig() {
         //get the config
         JFileChooser fileChooser = new JFileChooser();
@@ -37,7 +36,6 @@ public class loadConfig {
         fileChooser.setCurrentDirectory(new File(_config_path));
         fileChooser.setDialogTitle("Select your config");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-
 
         int response_ = fileChooser.showOpenDialog(null); //select file to open
 
@@ -53,19 +51,14 @@ public class loadConfig {
             System.out.println("[Error] No directory has been selected.");
         }
 
-
-
         //read it
         try {
-
             String jsonText = new String((Files.readAllBytes(Paths.get(load_config))));
             JSONObject o = new JSONObject(jsonText);
-
 
             config_path = (String) o.get("path");
             config_backuplocation = (String) o.get("backupLocation");
             config_name = (String) o.get("name");
-
 
         } catch (Exception e) {
 
