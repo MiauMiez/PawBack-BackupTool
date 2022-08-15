@@ -66,8 +66,4 @@ public class loadConfig {
             System.out.println("Something went wrong :/");
         }
     }
-
-
 }
-
-

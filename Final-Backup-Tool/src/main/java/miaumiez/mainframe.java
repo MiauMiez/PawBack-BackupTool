@@ -9,10 +9,8 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-
 import static miaumiez.main.json;
 import static miaumiez.main.main_path;
-
 
 public class mainframe implements ActionListener {
 
@@ -32,11 +30,7 @@ public class mainframe implements ActionListener {
 
     private JButton config_one_button;
 
-
     mainframe()  {
-
-
-
         config_one_button = new JButton("Backup 1");
         config_one_button.setBounds(30, 30, 100, 60);
         config_one_button.setFocusable(false);
@@ -96,7 +90,6 @@ public class mainframe implements ActionListener {
         frame.add(config_button);
 
         frame.add(config_one_button);
-
     }
 
 

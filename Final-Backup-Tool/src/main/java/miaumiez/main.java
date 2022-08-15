@@ -15,7 +15,6 @@ public class main {
 
     public static String json =  main_path + "config.json";
 
-
     public static void main (String[] args) throws IOException {
 
         //Creating the necessary folders
@@ -24,7 +23,6 @@ public class main {
             main_folder.mkdirs();
         }
 
-
         //The Text files for the shortcuts on mainframe
         File json = new File(main.json);
 
@@ -32,14 +30,7 @@ public class main {
             System.out.println("File created!");
         }
 
-
-
-
         //Start
         mainframe mainframe = new mainframe();
     }
-
-
 }
-
-

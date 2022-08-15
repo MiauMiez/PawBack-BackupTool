@@ -1,6 +1,5 @@
 package miaumiez;
 
-//comment
 import org.apache.commons.io.FileUtils;
 
 import javax.print.attribute.standard.JobHoldUntil;
@@ -34,7 +33,6 @@ public class backup {
         if (!theDir.exists()) {
             theDir.mkdirs();
         }
-
         //Clone Files
         File endFile = new File(end_path);
 
@@ -47,5 +45,3 @@ public class backup {
         }
     }
 }
-
-//Commit
