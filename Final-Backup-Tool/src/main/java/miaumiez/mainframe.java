@@ -78,6 +78,8 @@ public class mainframe implements ActionListener {
         frame.setSize(440,410);
         frame.setLayout(null);
 
+
+
        //add components
         frame.add(chooseFile_button);
         frame.add(chooseBackupLocation_button);
@@ -86,6 +88,7 @@ public class mainframe implements ActionListener {
         frame.add(config_button);
 
         frame.add(config_one_button);
+
     }
 
     @Override
@@ -217,8 +220,6 @@ public class mainframe implements ActionListener {
 
             System.out.println("[Error] No directory has been selected." );
         }
-
-
     }
 
     public void ChooseBackupLocation(){
@@ -244,6 +245,4 @@ public class mainframe implements ActionListener {
         }
 
     }
-
-
 }

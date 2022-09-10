@@ -2,20 +2,18 @@ package miaumiez;
 
 import org.apache.commons.io.FileUtils;
 
-import javax.print.attribute.standard.JobHoldUntil;
 import javax.swing.*;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.FileAlreadyExistsException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+
 
 public class backup {
 
     public void Backup() {
+
 
         //Variables
         boolean isFile = false;
@@ -60,7 +58,7 @@ public class backup {
 
         //Clone files
         try {
-            if (isFile) {
+            if (isFile){
 
                 FileUtils.copyFileToDirectory(mainframe.file_toBackup, new File((new_path)));
                 sendSuccessMessage();
@@ -75,7 +73,6 @@ public class backup {
             System.out.println("[Error] while copying the files: ");
             throw new RuntimeException(ex);
         }
-
     }
 
     public void sendSuccessMessage(){
