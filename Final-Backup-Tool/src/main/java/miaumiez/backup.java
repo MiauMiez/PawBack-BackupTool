@@ -13,8 +13,6 @@ import java.time.format.DateTimeFormatter;
 public class backup {
 
     public void Backup() {
-
-
         //Variables
         boolean isFile = false;
         File file_or_directory = mainframe.file_toBackup;
@@ -29,6 +27,8 @@ public class backup {
         //Get the size of the file that you want to back up
         try {
             long size = Files.size(Path.of(mainframe.file_toBackup.getPath()));
+
+
             System.out.println("[Info] + Size of " + mainframe.file_toBackup.getName() + " is " + size + " bytes");
         } catch (Exception e) {
             throw new RuntimeException(e);
