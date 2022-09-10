@@ -45,14 +45,12 @@ public class mainframe implements ActionListener {
         frame.pack();
         frame.setLocation(500, 350);
 
-
         //construct components
         chooseFile_button = new JButton ("Chose Directory");
         chooseBackupLocation_button = new JButton ("Choose Backup ");
         createBackup_button = new JButton ("Create Backup");
         quit_button = new JButton ("Quit");
         config_button = new JButton("Configs");
-
 
         //set component bounds (only needed by Absolute Positioning)
         chooseFile_button.setBounds (115, 275, 150, 25);
@@ -76,12 +74,10 @@ public class mainframe implements ActionListener {
         quit_button.addActionListener(this);
         config_button.addActionListener(this);
 
-
         //adjust size and set layout
         frame.setSize(440,410);
         frame.setLayout(null);
 
-        
        //add components
         frame.add(chooseFile_button);
         frame.add(chooseBackupLocation_button);
@@ -91,7 +87,6 @@ public class mainframe implements ActionListener {
 
         frame.add(config_one_button);
     }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -207,7 +202,7 @@ public class mainframe implements ActionListener {
 
         JFileChooser fileChooser = new JFileChooser();
 
-        fileChooser.setCurrentDirectory(new File("C:\\Users")); //sets current directory
+        fileChooser.setCurrentDirectory(new File("C:\\Users\\Alexander\\Desktop")); //sets current location
         fileChooser.setDialogTitle("!Select a directory/file that you want to backup");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
@@ -230,7 +225,7 @@ public class mainframe implements ActionListener {
 
         JFileChooser fileChooser = new JFileChooser();
 
-        fileChooser.setCurrentDirectory(new File("C:\\Users")); //sets current directory
+        fileChooser.setCurrentDirectory(new File("C:\\Users\\Alexander\\Desktop")); //sets current location
         fileChooser.setDialogTitle("!Select a Backup directory for your files");
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
