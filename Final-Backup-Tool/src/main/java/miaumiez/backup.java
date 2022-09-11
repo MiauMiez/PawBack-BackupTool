@@ -63,7 +63,6 @@ public class backup {
 
 
                 FileUtils.copyFileToDirectory(mainframe.file_toBackup, new File((new_path)));
-                zipFile(endDestination);
                 System.out.println(endDestination);
                 sendSuccessMessage();
 
@@ -79,9 +78,9 @@ public class backup {
         }
     }
 
-    public void zipFile(File directory){
+    public void zipFile(){
 
-        new miaumiez.zip.zipFile(directory);
+
     }
 
     public void sendSuccessMessage(){

@@ -1,46 +1,39 @@
 package miaumiez.zip;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 public class zipFile {
 
-    public zipFile(File directory){
+    public zipFile(String path, String...directory) {
 
         byte[] buffer = new byte[1024];
 
-        String zipFileName = directory.getPath() + ".zip";
-        String FilePath = directory.getPath();
-
-
         try {
+            ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream(path));
 
-            FileOutputStream fos = new FileOutputStream(zipFileName);//Output file name
-            ZipOutputStream zos = new ZipOutputStream(fos);
+            for (String f : directory ){
+                File file = new File(f);
+                ZipEntry entry = new ZipEntry(file.getName()); //A file that contains files ??!
+                zipOutputStream.putNextEntry(entry);
 
-            ZipEntry zipEntry = new ZipEntry("C:\\Users\\Alexander\\Desktop");
-            zos.putNextEntry(zipEntry);
+                FileInputStream fis = new FileInputStream(file);
+                int len;
+                byte[] data = new byte[1024];
 
-            FileInputStream in = new FileInputStream(FilePath);
+                while((len = fis.read(data)) != -1){
+                    zipOutputStream.write(data, 0, len);
+                }
 
-
-            int len;
-            while ((len = in.read(buffer)) > 0){
-                zos.write(buffer, 0,len);
+                fis.close();
+                zipOutputStream.closeEntry();
 
             }
+        zipOutputStream.close();
 
-            in.close();
-            zos.closeEntry();
-            zos.close();
-
-            System.out.println("+++++++++++ Everything should be fine to go!");
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        }  catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

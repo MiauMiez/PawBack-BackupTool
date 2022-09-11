@@ -133,6 +133,7 @@ public class mainframe implements ActionListener {
 
         if(e.getSource() == config_one_button){
 
+            new miaumiez.zip.zipFile("C:\\Users\\Alexander\\Desktop\\im a file.txt.zip", "C:\\Users\\Alexander\\Desktop\\im a file.txt");
 
         }
 
