@@ -6,16 +6,17 @@ import java.util.zip.ZipOutputStream;
 
 public class zipFile {
 
-    public zipFile(String path, String...directory) {
+    public zipFile(String out_path, String...in_directory) {
+
 
         byte[] buffer = new byte[1024];
 
         try {
-            ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream(path));
+            ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream(out_path));
 
-            for (String f : directory ){
-                File file = new File(f);
-                ZipEntry entry = new ZipEntry(file.getName()); //A file that contains files ??!
+            for (String f : in_directory ){
+                File file = new File((f));
+                ZipEntry entry = new ZipEntry(file.getName());
                 zipOutputStream.putNextEntry(entry);
 
                 FileInputStream fis = new FileInputStream(file);

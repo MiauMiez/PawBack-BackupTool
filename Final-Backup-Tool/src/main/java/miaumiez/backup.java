@@ -61,14 +61,14 @@ public class backup {
         try {
             if (isFile){
 
-
                 FileUtils.copyFileToDirectory(mainframe.file_toBackup, new File((new_path)));
-                System.out.println(endDestination);
+                zipFile( endDestination + ".zip", mainframe.file_toBackup.getPath());
                 sendSuccessMessage();
 
             } else {
 
                 FileUtils.copyDirectory(mainframe.file_toBackup, new File(new_path));
+                zipFolder( endDestination + ".zip", mainframe.file_toBackup.getPath());
                 sendSuccessMessage();
             }
 
@@ -78,9 +78,16 @@ public class backup {
         }
     }
 
-    public void zipFile(){
+    public void zipFile(String out, String in){
+
+        new miaumiez.zip.zipFile(out,in);
 
 
+    }
+
+    public void zipFolder(String out, String in) throws IOException {
+
+        new miaumiez.zip.zipDirectory(out,in);
     }
 
     public void sendSuccessMessage(){
