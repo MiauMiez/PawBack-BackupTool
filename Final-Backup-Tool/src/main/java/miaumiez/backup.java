@@ -1,5 +1,6 @@
 package miaumiez;
 
+import miaumiez.zip.zipFile;
 import org.apache.commons.io.FileUtils;
 
 import javax.swing.*;
@@ -60,7 +61,10 @@ public class backup {
         try {
             if (isFile){
 
+
                 FileUtils.copyFileToDirectory(mainframe.file_toBackup, new File((new_path)));
+                zipFile(endDestination);
+                System.out.println(endDestination);
                 sendSuccessMessage();
 
             } else {
@@ -75,8 +79,12 @@ public class backup {
         }
     }
 
+    public void zipFile(File directory){
+
+        new miaumiez.zip.zipFile(directory);
+    }
+
     public void sendSuccessMessage(){
         JOptionPane.showMessageDialog(null, "Loading Complete...!!! All files have been successfully copied!");
-
     }
 }
