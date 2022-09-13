@@ -30,6 +30,7 @@ public class loadConfig {
     static String config_backuplocation;
 
     loadConfig() {
+
         //get the config
         JFileChooser fileChooser = new JFileChooser();
 
@@ -53,6 +54,7 @@ public class loadConfig {
 
         //read it
         try {
+
             String jsonText = new String((Files.readAllBytes(Paths.get(load_config))));
             JSONObject o = new JSONObject(jsonText);
 

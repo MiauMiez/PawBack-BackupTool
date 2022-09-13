@@ -31,11 +31,11 @@ public class mainframe implements ActionListener {
     private JButton config_one_button;
 
     mainframe()  {
+
         config_one_button = new JButton("Backup 1");
         config_one_button.setBounds(30, 30, 100, 60);
         config_one_button.setFocusable(false);
         config_one_button.addActionListener(this);
-
 
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setBackground(new Color(82, 82, 82));
@@ -78,9 +78,7 @@ public class mainframe implements ActionListener {
         frame.setSize(440,410);
         frame.setLayout(null);
 
-
-
-       //add components
+        //add components
         frame.add(chooseFile_button);
         frame.add(chooseBackupLocation_button);
         frame.add(createBackup_button);
@@ -88,7 +86,6 @@ public class mainframe implements ActionListener {
         frame.add(config_button);
 
         frame.add(config_one_button);
-
     }
 
     @Override
@@ -100,14 +97,12 @@ public class mainframe implements ActionListener {
             System.exit(0);
         }
 
-
         //Choose Backup Files
         if(e.getSource() == chooseFile_button){
 
            ChooseFiles();
 
         }
-
 
         //Choose Backup Location
         if(e.getSource() == chooseBackupLocation_button){
@@ -133,9 +128,13 @@ public class mainframe implements ActionListener {
 
         if(e.getSource() == config_one_button){
 
+            try {
+                AddShortcut(1);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
 
         }
-
     }
 
     public void AddShortcut(int button) throws IOException {
@@ -144,13 +143,11 @@ public class mainframe implements ActionListener {
 
         if (dialog_result == JOptionPane.YES_NO_OPTION) {
 
-
             JFileChooser fileChooser = new JFileChooser();
 
             fileChooser.setCurrentDirectory(new File(main.config_path));
             fileChooser.setDialogTitle("Select your config");
             fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-
 
             int response_ = fileChooser.showOpenDialog(null); //select file to open
 
@@ -160,21 +157,12 @@ public class mainframe implements ActionListener {
                 String name = String.valueOf(new File(fileChooser.getSelectedFile().getName()));
                 System.out.println(shortcut_config);
 
-
-
             } else {
 
                 System.out.println("[Error] No directory has been selected.");
             }
 
-
             saveShortcut(button);
-
-            //saving the name or path or direct content
-            //It would be better to save the name
-            //
-
-
         }
     }
 
@@ -198,8 +186,6 @@ public class mainframe implements ActionListener {
 
         }
     }
-
-//DO NOT CHANGE ANYTHING HERE ***************************************************************************************************************************************************************************************************************************
 
     public void ChooseFiles(){
 

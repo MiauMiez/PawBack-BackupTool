@@ -215,13 +215,16 @@ public class configManager implements ActionListener{
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
         int response_ = fileChooser.showOpenDialog(null); //select file to open
+
         if(response_ == JFileChooser.APPROVE_OPTION) {
 
             c_load_config_string = String.valueOf(new File(fileChooser.getSelectedFile().getAbsolutePath()));
             System.out.println(c_load_config_string);
 
         }else{
+
             System.out.println("[Error] No directory has been selected." );
+
         }
 
         //read it
@@ -230,18 +233,12 @@ public class configManager implements ActionListener{
             String jsonText = new String((Files.readAllBytes(Paths.get(c_load_config_string))));
             JSONObject o = new JSONObject(jsonText);
 
-
-
             c_path = (String) o.get("path");
             c_backup_location= (String) o.get("backupLocation");
             c_name= (String) o.get("name");
 
-
-
              //Show the infos in a new Window
             JOptionPane.showMessageDialog(null, "Name: " + c_name + "\nPath to Backup: " + c_path + "\nBackup Location: " + c_backup_location, "Config info's", 2);
-
-
 
         }catch (Exception e){
 
@@ -252,7 +249,6 @@ public class configManager implements ActionListener{
 
     public void deleteConfigFile() {
 
-
         JFileChooser fileChooser = new JFileChooser();
 
         fileChooser.setCurrentDirectory(new File(config_path));
@@ -262,15 +258,12 @@ public class configManager implements ActionListener{
         int response_ = fileChooser.showOpenDialog(null); //select file to open
         if (response_ == JFileChooser.APPROVE_OPTION) {
 
-
             int dialog_result = JOptionPane.showConfirmDialog(null, "Are you sure that you want to delete \"" + fileChooser.getSelectedFile().getName() + " \"", "Config Manager", 2);
 
             if (dialog_result == JOptionPane.YES_NO_OPTION) {
+
                 fileChooser.getSelectedFile().delete();
             }
-
-
         }
     }
-
 }
