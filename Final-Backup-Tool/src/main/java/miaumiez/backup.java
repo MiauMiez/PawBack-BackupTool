@@ -51,23 +51,28 @@ public class backup {
         String new_path = mainframe.file_BackupLocation + "\\" + backup_folder_name;
 
         //Create Folder
+        /*
         File theDir = new File(new_path);
         if (!theDir.exists()) {
             theDir.mkdirs();
         }
+        */
+
         File endDestination = new File(new_path);
 
         //Clone files
         try {
             if (isFile){
 
-                FileUtils.copyFileToDirectory(mainframe.file_toBackup, new File((new_path)));
-                zipFile( endDestination + ".zip", mainframe.file_toBackup.getPath());
+                //FileUtils.copyFileToDirectory(mainframe.file_toBackup, new File((new_path)));
+               // zipFile( endDestination + ".zip", mainframe.file_toBackup.getPath());
+
+                zipFile( endDestination+ ".zip", mainframe.file_toBackup.getPath() );
                 sendSuccessMessage();
 
             } else {
 
-                FileUtils.copyDirectory(mainframe.file_toBackup, new File(new_path));
+                //FileUtils.copyDirectory(mainframe.file_toBackup, new File(new_path));
                 zipFolder( endDestination + ".zip", mainframe.file_toBackup.getPath());
                 sendSuccessMessage();
             }
