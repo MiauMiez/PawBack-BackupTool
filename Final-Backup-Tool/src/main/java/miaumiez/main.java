@@ -8,6 +8,9 @@ import java.io.IOException;
 
 public class main {
 
+
+    public static boolean zipFiles;
+
     public static String user = System.getProperty("user.name");
 
     public static String main_path = "C:\\Users\\" + user + "\\Documents\\backup_tool\\";

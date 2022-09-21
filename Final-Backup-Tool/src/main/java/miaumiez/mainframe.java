@@ -9,8 +9,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static miaumiez.main.json;
-import static miaumiez.main.main_path;
+import static miaumiez.main.*;
 
 public class mainframe implements ActionListener {
 
@@ -30,6 +29,8 @@ public class mainframe implements ActionListener {
 
     private JButton config_one_button;
 
+
+    public JCheckBox checkboxZip= new JCheckBox("Zip-Files? ");
     mainframe()  {
 
         config_one_button = new JButton("Backup 1");
@@ -78,6 +79,14 @@ public class mainframe implements ActionListener {
         frame.setSize(440,410);
         frame.setLayout(null);
 
+        //Zip-Checkbox
+        checkboxZip.setBounds(30, 200, 100, 40);
+        checkboxZip.setOpaque(false);
+        checkboxZip.addActionListener(this);
+
+        frame.add(checkboxZip);
+
+
         //add components
         frame.add(chooseFile_button);
         frame.add(chooseBackupLocation_button);
@@ -90,6 +99,18 @@ public class mainframe implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource() == checkboxZip){
+
+            zipFiles = checkboxZip.isSelected();
+            System.out.println(zipFiles);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                throw new RuntimeException(ex);
+            }
+
+        }
 
         //Quit Interaction
         if(e.getSource() == quit_button){

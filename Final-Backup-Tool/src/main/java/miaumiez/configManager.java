@@ -124,11 +124,8 @@ public class configManager implements ActionListener{
         c_name = showInputDialog(null, "Enter the name for your config", "CONFIG name", 1);
         System.out.println("Config name: " + c_name);
 
-
-
         //show introduction Dialog
         JOptionPane.showMessageDialog(null, "Select the folder that you want to backup in the future.", "CONFIG path", 1);
-
 
         //get path for the config
         JFileChooser fileChooser = new JFileChooser();
@@ -224,7 +221,6 @@ public class configManager implements ActionListener{
         }else{
 
             System.out.println("[Error] No directory has been selected." );
-
         }
 
         //read it

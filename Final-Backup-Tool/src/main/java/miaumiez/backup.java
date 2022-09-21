@@ -10,6 +10,8 @@ import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import static miaumiez.main.zipFiles;
+
 
 public class backup {
 
@@ -50,30 +52,33 @@ public class backup {
         //new path
         String new_path = mainframe.file_BackupLocation + "\\" + backup_folder_name;
 
-        //Create Folder
-        /*
-        File theDir = new File(new_path);
-        if (!theDir.exists()) {
-            theDir.mkdirs();
-        }
-        */
-
         File endDestination = new File(new_path);
 
         //Clone files
+
         try {
+            if(zipFiles){
+                if (isFile){
+
+                    zipFile( endDestination+ ".zip", mainframe.file_toBackup.getPath());
+                    sendSuccessMessage();
+
+                } else {
+
+                    zipFolder( endDestination + ".zip", mainframe.file_toBackup.getPath());
+                    sendSuccessMessage();
+                }
+            }
+
+            else
             if (isFile){
 
-                //FileUtils.copyFileToDirectory(mainframe.file_toBackup, new File((new_path)));
-               // zipFile( endDestination + ".zip", mainframe.file_toBackup.getPath());
-
-                zipFile( endDestination+ ".zip", mainframe.file_toBackup.getPath() );
+                FileUtils.copyFileToDirectory(mainframe.file_toBackup, new File((new_path)));
                 sendSuccessMessage();
 
             } else {
 
-                //FileUtils.copyDirectory(mainframe.file_toBackup, new File(new_path));
-                zipFolder( endDestination + ".zip", mainframe.file_toBackup.getPath());
+                FileUtils.copyDirectory(mainframe.file_toBackup, new File(new_path));
                 sendSuccessMessage();
             }
 
@@ -94,6 +99,7 @@ public class backup {
     }
 
     public void sendSuccessMessage(){
+
         JOptionPane.showMessageDialog(null, "Loading Complete...!!! All files have been successfully copied!");
     }
 }
