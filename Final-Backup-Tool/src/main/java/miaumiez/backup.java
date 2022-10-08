@@ -1,6 +1,7 @@
 package miaumiez;
 
 import miaumiez.zip.zipFile;
+import miaumiez.configManager;
 import org.apache.commons.io.FileUtils;
 
 import javax.swing.*;
@@ -11,7 +12,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import static miaumiez.main.zipFiles;
-
 
 public class backup {
 
@@ -98,8 +98,74 @@ public class backup {
         new miaumiez.zip.zipDirectory(out,in);
     }
 
+    public void backupConfig(String name, String path, String end_location, Boolean zip ){
+
+            //Test if it is a file or directory
+            boolean isFile = false;
+            File file_or_directory = new File(path);
+            if (file_or_directory.isFile()) {
+                isFile = true;
+            }
+
+            //Gets the Name of file_BackupLocation
+        File filetobackup = new File(path);
+        String backup_file_name = filetobackup.getName();
+
+
+        //Gets Current Time and date
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern(" dd.MM.yyyy");
+        String formattedDate = myDateObj.format(myFormatObj);
+
+        //Sets Folder name
+        String backup_folder_name = backup_file_name + formattedDate;
+        System.out.println("[Info] Backup-folder name: " + backup_folder_name);
+
+        //new path
+        String new_path = end_location + "\\" + backup_folder_name;
+
+        File endDestination = new File(new_path);
+
+        //Clone files and test for zip
+
+        try {
+            if(zip){
+                if (isFile){
+
+                    zipFile( endDestination+ ".zip", path);
+                    sendSuccessMessage();
+
+                } else {
+
+                    zipFolder( endDestination + ".zip", path);
+                    sendSuccessMessage();
+                }
+            }
+
+            else
+
+
+            if (isFile){
+
+                FileUtils.copyFileToDirectory(filetobackup, new File((new_path)));
+                sendSuccessMessage();
+
+            } else {
+
+                FileUtils.copyDirectory(filetobackup, new File(new_path));
+                sendSuccessMessage();
+            }
+
+        } catch (IOException ex) {
+            System.out.println("[Error] while copying the files: ");
+            throw new RuntimeException(ex);
+        }
+    }
+
     public void sendSuccessMessage(){
 
-        JOptionPane.showMessageDialog(null, "Loading Complete...!!! All files have been successfully copied!");
+        JOptionPane.showMessageDialog(null, "Loading complete! All files have been successfully copied!");
     }
+
+
 }

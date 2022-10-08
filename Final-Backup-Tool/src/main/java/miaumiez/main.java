@@ -1,5 +1,7 @@
 package miaumiez;
 
+import miaumiez.data.Serialization;
+import miaumiez.data.config_Info;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -8,13 +10,14 @@ import java.io.IOException;
 
 public class main {
 
+    public static config_Info dcI = new config_Info();
 
     public static boolean zipFiles;
 
     public static String user = System.getProperty("user.name");
 
     public static String main_path = "C:\\Users\\" + user + "\\Documents\\backup_tool\\";
-    public static String config_path = "C:\\Users\\" + user + "\\Documents\\backup_tool\\configs";
+    public static String config_path = "C:\\Users\\" + user + "\\Documents\\backup_tool\\configs\\";
 
     public static String json =  main_path + "config.json";
 
@@ -35,5 +38,9 @@ public class main {
 
         //Start
         mainframe mainframe = new mainframe();
+
+
+        //Serialization ser = new Serialization();
+       // ser.deSerialization();
     }
 }

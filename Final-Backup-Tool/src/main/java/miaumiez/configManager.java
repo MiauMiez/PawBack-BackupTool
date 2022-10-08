@@ -1,23 +1,22 @@
 package miaumiez;
 
-import org.json.JSONObject;
+import miaumiez.data.Serialization;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.*;
 
 import static javax.swing.JOptionPane.showConfirmDialog;
 import static javax.swing.JOptionPane.showInputDialog;
+import static miaumiez.main.dcI;
 
 public class configManager implements ActionListener{
 
    public JFrame frame = new JFrame("Backup Tool " + " CONFIGMANAGER");
+
+    Serialization serialize = new Serialization();
 
     String config_path = main.config_path;
 
@@ -29,6 +28,7 @@ public class configManager implements ActionListener{
     public String c_name;
     public String c_path;
     public File c_path_file;
+    public Boolean zip_file;
 
     public String c_backup_location;
     public File c_backup_location_file;
@@ -36,7 +36,7 @@ public class configManager implements ActionListener{
     public String c_load_config_string;
     public File c_load_config_file;
 
-    configManager(){
+    public configManager(){
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       //frame.setLocationRelativeTo(null);
@@ -106,6 +106,7 @@ public class configManager implements ActionListener{
 
         if(e.getSource() == c_load_config){
 
+
             loadConfig();
 
         }
@@ -168,38 +169,27 @@ public class configManager implements ActionListener{
             System.out.println("[Error] No directory has been selected." );
         }
 
+        //Do you want to zip the files in the future?
+        int dialog_result = JOptionPane.showConfirmDialog(null, "Do you want to zip the files in future?", "Config Manager", 2);
+
+        if (dialog_result == JOptionPane.YES_NO_OPTION) {
+
+            zip_file = true;
+
+        } else {
+
+            zip_file = false;
+        }
+        //
         c_path = c_path_file.getAbsolutePath();
         c_backup_location = c_backup_location_file.getAbsolutePath();
 
-        addConfig(c_name, c_path, c_backup_location);
-    }
+        dcI.end_location = c_backup_location;
+        dcI.name = c_name;
+        dcI.path = c_path;
+        dcI.zip = zip_file;
+        serialize.serialize();
 
-    public void addConfig(String name, String path, String location) throws IOException {
-
-        JSONObject jsob = new JSONObject();
-
-        jsob.put("name", name);
-        jsob.put("path", path);
-        jsob.put("backupLocation", location);
-
-
-
-        String filename =  "\\" + name + ".btc";
-        FileWriter file = null;
-        try {
-
-            file = new FileWriter(config_path +  filename);
-            file.write(String.valueOf(jsob));
-
-            System.out.println("yes you wrote the file!");
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } finally {
-            assert file != null;
-            file.flush();
-            file.close();
-        }
     }
 
     public void loadConfig(){
@@ -218,29 +208,15 @@ public class configManager implements ActionListener{
             c_load_config_string = String.valueOf(new File(fileChooser.getSelectedFile().getAbsolutePath()));
             System.out.println(c_load_config_string);
 
+
+            serialize.deSerialization(c_load_config_string);
+
+
         }else{
 
             System.out.println("[Error] No directory has been selected." );
         }
 
-        //read it
-        try {
-
-            String jsonText = new String((Files.readAllBytes(Paths.get(c_load_config_string))));
-            JSONObject o = new JSONObject(jsonText);
-
-            c_path = (String) o.get("path");
-            c_backup_location= (String) o.get("backupLocation");
-            c_name= (String) o.get("name");
-
-             //Show the infos in a new Window
-            JOptionPane.showMessageDialog(null, "Name: " + c_name + "\nPath to Backup: " + c_path + "\nBackup Location: " + c_backup_location, "Config info's", 2);
-
-        }catch (Exception e){
-
-            e.printStackTrace();
-            System.out.println("Something went wrong :/");
-        }
     }
 
     public void deleteConfigFile() {

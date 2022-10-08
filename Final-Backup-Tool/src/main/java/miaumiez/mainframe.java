@@ -1,13 +1,9 @@
 package miaumiez;
 
-import org.json.JSONObject;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import static miaumiez.main.*;
 
@@ -27,16 +23,16 @@ public class mainframe implements ActionListener {
     private JButton quit_button;
     private JButton config_button;
 
-    private JButton config_one_button;
-
+    private JButton load_config_button;
 
     public JCheckBox checkboxZip= new JCheckBox("Zip-Files? ");
     mainframe()  {
 
-        config_one_button = new JButton("Backup 1");
-        config_one_button.setBounds(30, 30, 100, 60);
-        config_one_button.setFocusable(false);
-        config_one_button.addActionListener(this);
+        load_config_button = new JButton("Backup Configs");
+        load_config_button.setBounds(30, 30, 360, 60);
+        load_config_button.setFocusable(false);
+        load_config_button.addActionListener(this);
+
 
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setBackground(new Color(82, 82, 82));
@@ -86,7 +82,6 @@ public class mainframe implements ActionListener {
 
         frame.add(checkboxZip);
 
-
         //add components
         frame.add(chooseFile_button);
         frame.add(chooseBackupLocation_button);
@@ -94,7 +89,8 @@ public class mainframe implements ActionListener {
         frame.add(quit_button);
         frame.add(config_button);
 
-        frame.add(config_one_button);
+        frame.add(load_config_button);
+
     }
 
     @Override
@@ -147,66 +143,14 @@ public class mainframe implements ActionListener {
 
         }
 
-        if(e.getSource() == config_one_button){
+        if(e.getSource() == load_config_button){
 
-            try {
-                AddShortcut(1);
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
+            configManager cm = new configManager();
+            cm.loadConfig();
 
         }
     }
 
-    public void AddShortcut(int button) throws IOException {
-
-        int dialog_result = JOptionPane.showConfirmDialog(null, "Would you like to create a config shortcut?", "Add config shortcut", 2);
-
-        if (dialog_result == JOptionPane.YES_NO_OPTION) {
-
-            JFileChooser fileChooser = new JFileChooser();
-
-            fileChooser.setCurrentDirectory(new File(main.config_path));
-            fileChooser.setDialogTitle("Select your config");
-            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-
-            int response_ = fileChooser.showOpenDialog(null); //select file to open
-
-            if (response_ == JFileChooser.APPROVE_OPTION) {
-
-                shortcut_config = String.valueOf(new File(fileChooser.getSelectedFile().getAbsolutePath()));
-                String name = String.valueOf(new File(fileChooser.getSelectedFile().getName()));
-                System.out.println(shortcut_config);
-
-            } else {
-
-                System.out.println("[Error] No directory has been selected.");
-            }
-
-            saveShortcut(button);
-        }
-    }
-
-    public void saveShortcut(int button) throws IOException {
-
-        JSONObject jsob = new JSONObject();
-
-
-
-        FileWriter file = new FileWriter(json);
-        try {
-
-            file.write(String.valueOf(jsob));
-
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } finally {
-            file.flush();
-            file.close();
-
-        }
-    }
 
     public void ChooseFiles(){
 
