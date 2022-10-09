@@ -156,7 +156,7 @@ public class mainframe implements ActionListener {
 
             String path = config_path + choice_config.getItem(choice_config.getSelectedIndex()) + ".ser";
 
-            serialize.deSerialization(path);
+            serialize.deSerialization(path, true);
 
         }
     }

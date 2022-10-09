@@ -22,7 +22,7 @@ public class configManager implements ActionListener{
 
     private JButton c_back_button;
     private JButton c_add_config;
-    private JButton c_load_config;
+    private JButton c_get_info;
     private JButton c_delete_config;
 
     public String c_name;
@@ -52,33 +52,33 @@ public class configManager implements ActionListener{
         //Add Text
         c_back_button = new JButton ("back");
         c_add_config = new JButton("add config");
-        c_load_config = new JButton("config info");
+        c_get_info = new JButton("config info");
         c_delete_config = new JButton("delete config");
 
         //Position and Size
         c_back_button.setBounds (10, 335, 85, 20);
         c_add_config.setBounds(245, 335, 130,20 );
 
-        c_load_config.setBounds(245, 265, 130, 20);
+        c_get_info.setBounds(245, 265, 130, 20);
         c_delete_config.setBounds(245, 300, 130,20);
 
         //Other settings
         c_back_button.setFocusable(false);
         c_add_config.setFocusable(false);
-        c_load_config.setFocusable(false);
+        c_get_info.setFocusable(false);
         c_delete_config.setFocusable(false);
 
 
         //Action Listener
         c_back_button.addActionListener(this);
         c_add_config.addActionListener(this);
-        c_load_config.addActionListener(this);
+        c_get_info.addActionListener(this);
         c_delete_config.addActionListener(this);
 
         //Add buttons to the frame
         frame.add(c_back_button);
         frame.add(c_add_config);
-        frame.add(c_load_config);
+        frame.add(c_get_info);
         frame.add(c_delete_config);
     }
 
@@ -104,15 +104,23 @@ public class configManager implements ActionListener{
 
         }
 
-        if(e.getSource() == c_load_config){
+        if(e.getSource() == c_get_info){
 
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setCurrentDirectory(new File(config_path));
+            fileChooser.setDialogTitle("Select your config");
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            int response_ = fileChooser.showOpenDialog(null);
 
-            loadConfig();
+            if(response_ == JFileChooser.APPROVE_OPTION) {
 
+                String path_c = String.valueOf(new File(fileChooser.getSelectedFile().getAbsolutePath()));
+
+                serialize.deSerialization(path_c, false);
+            }
         }
 
         if(e.getSource() == c_delete_config){
-
 
             deleteConfigFile();
 
@@ -197,34 +205,13 @@ public class configManager implements ActionListener{
 
     }
 
-    public void loadConfig(){
+    public void sendConfig_Info(String name, String path, String end_location, boolean zip ){
 
-
-        /*
-         //get the config
-        JFileChooser fileChooser = new JFileChooser();
-
-        fileChooser.setCurrentDirectory(new File(config_path));
-        fileChooser.setDialogTitle("Select your config");
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-
-        int response_ = fileChooser.showOpenDialog(null); //select file to open
-
-        if(response_ == JFileChooser.APPROVE_OPTION) {
-
-            c_load_config_string = String.valueOf(new File(fileChooser.getSelectedFile().getAbsolutePath()));
-            System.out.println(c_load_config_string);
-
-
-            serialize.deSerialization(c_load_config_string);
-
-
-        }else{
-
-            System.out.println("[Error] No directory has been selected." );
-        }
-
-         */
+        frame.dispose();
+        JOptionPane.showMessageDialog(frame,
+                "Path: " + path + "\n" + "Where to backup: " + end_location + "\n" + "Zip file/s: " + zip,
+                "Config: " + name,
+                JOptionPane.PLAIN_MESSAGE);
 
     }
 

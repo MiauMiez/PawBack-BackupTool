@@ -11,7 +11,9 @@ import static miaumiez.main.dcI;
 
 public class Serialization {
 
-    backup backup = new backup();
+    backup backup_class = new backup();
+
+
 
     public void serialize(){
 
@@ -32,7 +34,9 @@ public class Serialization {
         }
     }
 
-    public void deSerialization(String path){
+    public void deSerialization(String path, boolean backup){
+
+
 
        config_Info e = null;
         try {
@@ -53,7 +57,17 @@ public class Serialization {
             return;
         }
 
-        backup.backupConfig(e.name, e.path, e.end_location, e.zip);
+        if (backup){
+
+            backup_class.backupConfig(e.name, e.path, e.end_location, e.zip);
+
+        } else {
+            configManager cm = new configManager();
+            cm.sendConfig_Info(e.name, e.path, e.end_location, e.zip);
+
+        }
+
+
 
     }
 }
