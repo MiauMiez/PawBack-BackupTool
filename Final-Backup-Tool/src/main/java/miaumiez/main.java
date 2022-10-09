@@ -30,11 +30,6 @@ public class main {
         }
 
         //The Text files for the shortcuts on mainframe
-        File json = new File(main.json);
-
-        if(json.createNewFile()){
-            System.out.println("File created!");
-        }
 
         //Start
         mainframe mainframe = new mainframe();

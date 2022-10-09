@@ -3,8 +3,6 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Backup_tool_jar2</output-path>
     <root id="archive" name="Backup-tool.jar">
       <element id="module-output" name="Final-Backup-Tool" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-io/commons-io/2.6/commons-io-2.6.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/json/json/20180130/json-20180130.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
