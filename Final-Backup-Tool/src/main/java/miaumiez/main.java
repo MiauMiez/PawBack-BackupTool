@@ -40,7 +40,5 @@ public class main {
         mainframe mainframe = new mainframe();
 
 
-        //Serialization ser = new Serialization();
-       // ser.deSerialization();
     }
 }

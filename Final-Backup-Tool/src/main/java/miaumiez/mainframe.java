@@ -1,5 +1,7 @@
 package miaumiez;
 
+import miaumiez.data.Serialization;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -15,6 +17,7 @@ public class mainframe implements ActionListener {
     private String shortcut_config;
 
     backup backupClass = new backup();
+    Serialization serialize = new Serialization();
 
     public JFrame frame = new JFrame ("Backup Tool " + " 1.0-SNAPSHOT" );
     private JButton chooseFile_button;
@@ -24,15 +27,11 @@ public class mainframe implements ActionListener {
     private JButton config_button;
 
     private JButton load_config_button;
+    public static Choice choice_config;
 
     public JCheckBox checkboxZip= new JCheckBox("Zip-Files? ");
+
     mainframe()  {
-
-        load_config_button = new JButton("Backup Configs");
-        load_config_button.setBounds(30, 30, 360, 60);
-        load_config_button.setFocusable(false);
-        load_config_button.addActionListener(this);
-
 
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setBackground(new Color(82, 82, 82));
@@ -75,10 +74,22 @@ public class mainframe implements ActionListener {
         frame.setSize(440,410);
         frame.setLayout(null);
 
+        //Backup config button
+        load_config_button = new JButton("Backup Config");
+        load_config_button.setBounds(290, 100, 120, 20);
+        load_config_button.setFocusable(false);
+        load_config_button.addActionListener(this);
+
         //Zip-Checkbox
-        checkboxZip.setBounds(30, 200, 100, 40);
+        checkboxZip.setBounds(115, 200, 100, 40);
         checkboxZip.setOpaque(false);
         checkboxZip.addActionListener(this);
+
+        //config choice
+        choice_config = new Choice();
+        choice_config.setFocusable(false);
+        choice_config.setBounds(80,100,200,20);
+
 
         frame.add(checkboxZip);
 
@@ -88,8 +99,10 @@ public class mainframe implements ActionListener {
         frame.add(createBackup_button);
         frame.add(quit_button);
         frame.add(config_button);
-
         frame.add(load_config_button);
+        frame.add(choice_config);
+
+        new addChoices();
 
     }
 
@@ -100,11 +113,6 @@ public class mainframe implements ActionListener {
 
             zipFiles = checkboxZip.isSelected();
             System.out.println(zipFiles);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                throw new RuntimeException(ex);
-            }
 
         }
 
@@ -143,10 +151,12 @@ public class mainframe implements ActionListener {
 
         }
 
+        //Backup config files button
         if(e.getSource() == load_config_button){
 
-            configManager cm = new configManager();
-            cm.loadConfig();
+            String path = config_path + choice_config.getItem(choice_config.getSelectedIndex()) + ".ser";
+
+            serialize.deSerialization(path);
 
         }
     }

@@ -125,6 +125,11 @@ public class configManager implements ActionListener{
         c_name = showInputDialog(null, "Enter the name for your config", "CONFIG name", 1);
         System.out.println("Config name: " + c_name);
 
+        if(c_name.isEmpty()){
+            c_name = "config without name";
+
+        }
+
         //show introduction Dialog
         JOptionPane.showMessageDialog(null, "Select the folder that you want to backup in the future.", "CONFIG path", 1);
 
@@ -194,7 +199,9 @@ public class configManager implements ActionListener{
 
     public void loadConfig(){
 
-        //get the config
+
+        /*
+         //get the config
         JFileChooser fileChooser = new JFileChooser();
 
         fileChooser.setCurrentDirectory(new File(config_path));
@@ -216,6 +223,8 @@ public class configManager implements ActionListener{
 
             System.out.println("[Error] No directory has been selected." );
         }
+
+         */
 
     }
 

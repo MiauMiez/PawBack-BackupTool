@@ -55,12 +55,6 @@ public class Serialization {
 
         backup.backupConfig(e.name, e.path, e.end_location, e.zip);
 
-        System.out.println("Name: " + e.name);
-        System.out.println("Path: " + e.path);
-        System.out.println("end_location: " + e.end_location);
-        System.out.println("Zip files? " + e.zip);
-
-
     }
 }
 
