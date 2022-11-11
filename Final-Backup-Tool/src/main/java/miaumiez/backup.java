@@ -29,10 +29,10 @@ public class backup {
 
         //Get the size of the file that you want to back up
         try {
-            long size = Files.size(Path.of(mainframe.file_toBackup.getPath()));
+            //long size = Files.size(mainframe.file_toBackup.toString());
 
 
-            System.out.println("[Info] + Size of " + mainframe.file_toBackup.getName() + " is " + size + " bytes");
+            System.out.println("[Info] + Size of " + mainframe.file_toBackup.getName() + " is " + " bytes");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
