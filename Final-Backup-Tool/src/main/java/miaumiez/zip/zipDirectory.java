@@ -17,7 +17,6 @@ public class zipDirectory {
             throw new RuntimeException(e);
         }
 
-
         ZipOutputStream zipOut = new ZipOutputStream(fos);
         File fileToZip = new File(sourceFile);
 

@@ -1,4 +1,4 @@
-package miaumiez.data;
+package miaumiez.config_data;
 
 import miaumiez.backup;
 import miaumiez.configManager;
@@ -12,8 +12,6 @@ import static miaumiez.main.dcI;
 public class Serialization {
 
     backup backup_class = new backup();
-
-
 
     public void serialize(){
 
@@ -35,8 +33,6 @@ public class Serialization {
     }
 
     public void deSerialization(String path, boolean backup){
-
-
 
        config_Info e = null;
         try {

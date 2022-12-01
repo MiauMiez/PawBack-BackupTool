@@ -1,6 +1,6 @@
 package miaumiez;
 
-import miaumiez.data.Serialization;
+import miaumiez.config_data.Serialization;
 
 import javax.swing.*;
 import java.awt.*;
@@ -47,7 +47,8 @@ public class configManager implements ActionListener{
         frame.setLayout (null);
         frame.pack();
 
-        frame.setLocation(500, 350);
+        //frame.setLocation(500, 350);
+        //frame.setLocationRelativeTo(null);
 
         //Add Text
         c_back_button = new JButton ("back");

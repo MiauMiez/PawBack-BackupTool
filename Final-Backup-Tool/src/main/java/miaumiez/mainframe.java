@@ -1,6 +1,6 @@
 package miaumiez;
 
-import miaumiez.data.Serialization;
+import miaumiez.config_data.Serialization;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,6 +25,7 @@ public class mainframe implements ActionListener {
     private JButton createBackup_button;
     private JButton quit_button;
     private JButton config_button;
+    private JButton time_manager_button;
 
     private JButton load_config_button;
     public static Choice choice_config;
@@ -33,13 +34,16 @@ public class mainframe implements ActionListener {
 
     mainframe()  {
 
+
+
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setBackground(new Color(82, 82, 82));
-        frame.setLocationRelativeTo(null);
+        frame.getContentPane().setBackground(new Color(34, 40, 49));
+        //frame.setLocationRelativeTo(null);
         frame.setVisible (true);
         frame.setResizable(false);
         frame.pack();
-        frame.setLocation(500, 350);
+        //frame.setLocation(500, 350);
+
 
         //construct components
         chooseFile_button = new JButton ("Chose Directory");
@@ -90,8 +94,14 @@ public class mainframe implements ActionListener {
         choice_config.setFocusable(false);
         choice_config.setBounds(80,100,200,20);
 
+        //add time-manager button
+        time_manager_button = new JButton("auto-backup");
+        time_manager_button.setOpaque(false);
+        time_manager_button.setFocusable(false);
+        time_manager_button.setBounds(300,310, 110,20);
+        time_manager_button.addActionListener(this);
 
-        frame.add(checkboxZip);
+        frame.add(time_manager_button);
 
         //add components
         frame.add(chooseFile_button);
@@ -101,14 +111,20 @@ public class mainframe implements ActionListener {
         frame.add(config_button);
         frame.add(load_config_button);
         frame.add(choice_config);
+        frame.add(checkboxZip);
 
         new addChoices();
-
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        if (e.getSource() == time_manager_button){
+
+            new miaumiez.time.frame();
+            frame.dispose();
+
+        }
         if (e.getSource() == checkboxZip){
 
             zipFiles = checkboxZip.isSelected();

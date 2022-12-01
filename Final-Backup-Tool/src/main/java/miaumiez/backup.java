@@ -31,7 +31,6 @@ public class backup {
         try {
             //long size = Files.size(mainframe.file_toBackup.toString());
 
-
             System.out.println("[Info] + Size of " + mainframe.file_toBackup.getName() + " is " + " bytes");
         } catch (Exception e) {
             throw new RuntimeException(e);

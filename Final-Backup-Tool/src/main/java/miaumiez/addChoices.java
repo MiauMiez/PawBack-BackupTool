@@ -5,9 +5,10 @@ import java.io.FilenameFilter;
 
 import static miaumiez.main.config_path;
 import static miaumiez.mainframe.choice_config;
+import static miaumiez.time.frame.config_choice;
 
 public class addChoices {
-    addChoices(){
+    public addChoices(){
 
         try {
 
@@ -32,6 +33,7 @@ public class addChoices {
 
                 String fileName = name.substring(0, name.lastIndexOf('.'));
                 choice_config.add(fileName);
+                config_choice.add(fileName);
             }
 
         } catch (Exception e) {
