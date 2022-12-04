@@ -2,20 +2,16 @@ package miaumiez.time;
 
 public class timeManager {
 
+    public void mainManager(){
 
+    }
 
+    private void closeAPP(){
+
+        System.exit(0);
+    }
 
 }
-//time_config_path
 
-
-/*
-Things we need to store:
-
-{
-  "config": "path\\configs\\time\\config.ser",
-  "time": "option_2",
-  "nextTime": "05.01.2023"
-}
-
- */
+//fetch the folder for existing files
+//if files == 0 System.status(0)

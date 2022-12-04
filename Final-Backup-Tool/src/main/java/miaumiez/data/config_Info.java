@@ -1,4 +1,4 @@
-package miaumiez.config_data;
+package miaumiez.data;
 
 public class config_Info implements java.io.Serializable {
 

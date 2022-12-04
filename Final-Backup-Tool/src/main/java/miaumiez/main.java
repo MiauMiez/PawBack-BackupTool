@@ -1,6 +1,6 @@
 package miaumiez;
 
-import miaumiez.config_data.config_Info;
+import miaumiez.data.config_Info;
 import miaumiez.time.timeManager;
 
 import java.io.File;
@@ -16,9 +16,9 @@ public class main {
 
     public static String main_path = "C:\\Users\\" + user + "\\Documents\\backup_tool\\";
     public static String config_path = "C:\\Users\\" + user + "\\Documents\\backup_tool\\configs\\";
-    public static String time_config_path = config_path + "\\time\\";
+    public static String time_config_path = config_path + "time\\";
 
-    public static String json =  main_path + "config.json";
+
 
     public static void main (String[] args) throws IOException {
 
@@ -28,14 +28,17 @@ public class main {
                main_folder.mkdirs();
         }
 
-        File time_path = new File(time_config_path);
-            if (!time_path.exists()) {
-                    time_path.mkdirs();
-            }
+        //File time_path = new File(time_config_path);
+        File time_folder = new File(time_config_path);
+        if (!time_folder.exists()) {
+            time_folder.mkdirs();
+
+        }
 
 
         //Testing for auto backups
-        timeManager timeManager = new timeManager();
+        new timeManager();
+
 
         //Start
         mainframe mainframe = new mainframe();

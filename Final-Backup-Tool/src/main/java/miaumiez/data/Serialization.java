@@ -1,19 +1,19 @@
-package miaumiez.config_data;
+package miaumiez.data;
 
 import miaumiez.backup;
 import miaumiez.configManager;
-
-import java.io.*;
-
 import static miaumiez.main.config_path;
 import static miaumiez.main.dcI;
+
+import java.io.*;
 
 
 public class Serialization {
 
     backup backup_class = new backup();
 
-    public void serialize(){
+
+    public void serialize() {
 
         String path = config_path + dcI.name + ".ser";
 
@@ -32,9 +32,10 @@ public class Serialization {
         }
     }
 
-    public void deSerialization(String path, boolean backup){
+    public void deSerialization(String path, boolean backup) {
 
-       config_Info e = null;
+        config_Info e = null;
+
         try {
 
             FileInputStream fileIn = new FileInputStream(path);
@@ -53,7 +54,7 @@ public class Serialization {
             return;
         }
 
-        if (backup){
+        if (backup) {
 
             backup_class.backupConfig(e.name, e.path, e.end_location, e.zip);
 
@@ -62,9 +63,6 @@ public class Serialization {
             cm.sendConfig_Info(e.name, e.path, e.end_location, e.zip);
 
         }
-
-
-
     }
 }
 

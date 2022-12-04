@@ -1,6 +1,6 @@
 package miaumiez;
 
-import miaumiez.config_data.Serialization;
+import miaumiez.data.Serialization;
 
 import javax.swing.*;
 import java.awt.*;
@@ -91,7 +91,6 @@ public class configManager implements ActionListener{
 
             mainframe mainframe = new mainframe();
             frame.dispose();
-
         }
 
         //add button
@@ -102,7 +101,6 @@ public class configManager implements ActionListener{
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
-
         }
 
         if(e.getSource() == c_get_info){
@@ -124,7 +122,6 @@ public class configManager implements ActionListener{
         if(e.getSource() == c_delete_config){
 
             deleteConfigFile();
-
         }
     }
 
@@ -136,7 +133,6 @@ public class configManager implements ActionListener{
 
         if(c_name.isEmpty()){
             c_name = "config without name";
-
         }
 
         //show introduction Dialog

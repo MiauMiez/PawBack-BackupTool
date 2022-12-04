@@ -1,6 +1,6 @@
 package miaumiez;
 
-import miaumiez.config_data.Serialization;
+import miaumiez.data.Serialization;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +19,7 @@ public class mainframe implements ActionListener {
     backup backupClass = new backup();
     Serialization serialize = new Serialization();
 
+
     public JFrame frame = new JFrame ("Backup Tool " + " 1.0-SNAPSHOT" );
     private JButton chooseFile_button;
     private JButton chooseBackupLocation_button;
@@ -32,9 +33,7 @@ public class mainframe implements ActionListener {
 
     public JCheckBox checkboxZip= new JCheckBox("Zip-Files? ");
 
-    mainframe()  {
-
-
+    public mainframe()  {
 
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setBackground(new Color(34, 40, 49));
@@ -171,8 +170,11 @@ public class mainframe implements ActionListener {
         if(e.getSource() == load_config_button){
 
             String path = config_path + choice_config.getItem(choice_config.getSelectedIndex()) + ".ser";
+            System.out.println(path);
+
 
             serialize.deSerialization(path, true);
+            System.out.println("I have been called");
 
         }
     }
