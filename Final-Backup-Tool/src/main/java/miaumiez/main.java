@@ -19,7 +19,6 @@ public class main {
     public static String time_config_path = config_path + "time\\";
 
 
-
     public static void main (String[] args) throws IOException {
 
         //Creating the necessary folders
@@ -35,14 +34,10 @@ public class main {
 
         }
 
-
         //Testing for auto backups
         new timeManager();
 
-
         //Start
         mainframe mainframe = new mainframe();
-
-
     }
 }

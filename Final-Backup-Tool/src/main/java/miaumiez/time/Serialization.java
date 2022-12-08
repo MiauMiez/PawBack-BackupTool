@@ -6,8 +6,12 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.UUID;
 
 import static miaumiez.main.time_config_path;
@@ -33,11 +37,10 @@ public class Serialization {
             default:
         }
 
-        //get a readable timestamp
-        String timeStamp = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(LocalDateTime.now());
+        String date = "dd";
 
         try {
-            jsonGenerator(config_path, time_option, timeStamp, name);
+            jsonGenerator(config_path, time_option, date , name);
         }catch (IOException e){e.printStackTrace();}
     }
 
@@ -49,7 +52,7 @@ public class Serialization {
 
         JSONObject jsonObject = new JSONObject();
 
-        jsonObject.put("time", "15.15.2015");
+        jsonObject.put("time", timestamp);
         jsonObject.put("config_path", config_path);
         jsonObject.put("auto_time_option", auto_time);
 
@@ -58,5 +61,11 @@ public class Serialization {
         fileWriter.flush();
         fileWriter.close();
     }
-}
 
+    public void get_date(){
+
+
+
+
+    }
+}

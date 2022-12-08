@@ -7,25 +7,21 @@ import static miaumiez.main.config_path;
 
 public class configList {
 
-
         String[] path_names;
 
         File list_file = new File(config_path);
 
+        configList(){
 
+            path_names = list_file.list();
 
-    configList(){
+            for(String pathname : path_names){
 
-        path_names = list_file.list();
+             if(pathname.endsWith(".btc")){
 
-        for(String pathname : path_names){
+                System.out.println(pathname);
 
-
-         if(pathname.endsWith(".btc")){
-
-         System.out.println(pathname);
-
-         }
+             }
+            }
         }
-    }
 }
