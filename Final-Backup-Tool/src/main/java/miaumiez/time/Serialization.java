@@ -7,10 +7,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.UUID;
 
@@ -37,10 +34,10 @@ public class Serialization {
             default:
         }
 
-        String date = "dd";
+
 
         try {
-            jsonGenerator(config_path, time_option, date , name);
+            jsonGenerator(config_path, time_option, get_date(), name);
         }catch (IOException e){e.printStackTrace();}
     }
 
@@ -62,10 +59,15 @@ public class Serialization {
         fileWriter.close();
     }
 
-    public void get_date(){
+    public String get_date(){
+
+        Date date = new Date();
+        Timestamp ts=new Timestamp(date.getTime());
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
 
 
-
+        String stamp = String.valueOf(ts.getTime());
+        return stamp;
     }
 }

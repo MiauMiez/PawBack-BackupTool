@@ -5,6 +5,10 @@ import org.json.JSONObject;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.YearMonth;
+import java.util.Date;
 
 import static miaumiez.main.time_config_path;
 
@@ -62,15 +66,40 @@ public class timeManager {
             check_time(time, backup_mode, the_file);
         }
 
-        public void check_time (String time,int mode, File time_config){
+        public void check_time (String time,int mode, File time_config) {
 
             file_index++;
 
-            if (file_index == max_file_index){
+            if (file_index == max_file_index) {
                 //closeAPP();
             }
 
-            //Make mode to time
+            long time_long = Long.parseLong(time);
+            Timestamp ts = new Timestamp(time_long);
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+            String file_time = formatter.format(ts);
+            String current_time = get_Time();
+
+            System.out.println("This is the time from json file: " + file_time);
+            System.out.println("This is the current time: " + current_time);
+
+            Timestamp ts1 = Timestamp.valueOf(file_time + " 00:00:00");
+            Timestamp ts2 = Timestamp.valueOf(current_time + " 00:00:00");
+
+            int compare = ts1.compareTo(ts2);
+
+            if(compare==0){
+                System.out.println("Both values are equal");
+            }
+             else if(compare>0){
+                System.out.println("TimeSpan1 value is greater");
+            }
+            else{
+                System.out.println("TimeSpan2 value is greater");
+            }
+
+
 
             //Addiere mode_time to lastbackup time
 
@@ -78,7 +107,16 @@ public class timeManager {
 
             //and change the config to current date
 
+        }
 
+        private String get_Time(){
+
+            Date date = new Date();
+            Timestamp ts=new Timestamp(date.getTime());
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            String stamp = formatter.format(ts);
+
+            return stamp;
         }
 
         private void closeAPP () {
