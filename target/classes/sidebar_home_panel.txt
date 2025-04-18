@@ -1,0 +1,14 @@
+sidebar_home_panel 
+sidebar_setting_panel 
+sidebar_config_panel
+sidebar_help_panel 
+
+panel_home -> Right
+panel_config -> Right 
+panel_setting -> Right 
+
+dev_pannel -> Is small Panel with two buttons
+
+main_panel ? 
+
+

@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="Backup-tool:jar2" />
+      <artifact name="PawBack-GUI:jar" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81b88bb2-e426-46fa-a280-b9f3d3bac1d1" name="Changes" comment="" />
+    <list default="true" id="ebe821b2-174f-4b5e-8452-b5afccf568ad" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,27 +22,16 @@
       </list>
     </option>
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Final-Backup-Tool/src/main/java/miaumiez/main.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Final-Backup-Tool/src/main/java/miaumiez/time/Serialization.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Final-Backup-Tool/src/main/java/miaumiez/time/frame.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Final-Backup-Tool/src/main/java/miaumiez/time/timeManager.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/miaumiez/gui/manage_config.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProjectId" id="2CAMhLXq0w9EDnmuyUvGMN2BKoB" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2NKbQmNk7u99SyuUimj9NsOMads" />
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -50,33 +39,32 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Notification.DisplayName-DoNotAsk-Download Shared Index": "Shared indexes available",
-    "Notification.DoNotAsk-Download Shared Index": "true",
+    "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "jdk.selected.JAVA_MODULE": "18",
-    "last_opened_file_path": "C:/Users/Alexander/Downloads/json-20220924.jar",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/alexa/Desktop/Altär/märz23/PawBack-GUI",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "discord-application"
   }
 }]]></component>
-  <component name="ReadonlyStatusHandler">
-    <option name="SHOW_DIALOG" value="false" />
-  </component>
   <component name="RecentsManager">
-    <key name="ExtractSuperBase.RECENT_KEYS">
-      <recent name="miaumiez.time" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Alexander\Documents\Coding\Intellij Projects\PawBack-GUI\src\main\resources\images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Alexander\Documents\Coding\Intellij Projects\PawBack-GUI\src\main\resources" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="miaumiez.main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="miaumiez.main" />
-      <module name="Final-Backup-Tool" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.miaumiez.Main" />
+      <module name="PawBack-GUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="miaumiez.time.*" />
+          <option name="PATTERN" value="org.miaumiez.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -86,7 +74,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.miaumiez.main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -96,21 +84,12 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="81b88bb2-e426-46fa-a280-b9f3d3bac1d1" name="Changes" comment="" />
-      <created>1658241053795</created>
+      <changelist id="ebe821b2-174f-4b5e-8452-b5afccf568ad" name="Changes" comment="" />
+      <created>1679415708234</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1658241053795</updated>
+      <updated>1679415708234</updated>
     </task>
     <servers />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <ignored-roots>
-      <path value="$PROJECT_DIR$" />
-    </ignored-roots>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>
